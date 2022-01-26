@@ -8,12 +8,26 @@ struct ContentView: View {
             Text("Hello")
                 .font(.title)
             
-            Link("@Shakshi3104",
-                 destination: URL(string: "https://github.com/Shakshi3104")!)
+            SNSLinkView(snsName: "GitHub",
+                        accountName: "@Shakshi3104",
+                        url: URL(string: "https://github.com/Shakshi3104")!)
         }
     }
 }
 
+struct SNSLinkView: View {
+    var snsName: String
+    var accountName: String
+    var url: URL
+    
+    var body: some View {
+        HStack {
+            Text(snsName)
+                .foregroundColor(.secondary)
+            Link(accountName, destination: url)
+        }
+    }
+}
 
 struct ItemView: View {
     var text: String
